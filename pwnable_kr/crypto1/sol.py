@@ -19,7 +19,7 @@ def getCookie():
         for c in "1234567890abcdefghijklmnopqrstuvwxyz-_":
             epacket1 = getEpacket(padding + b"--" + cookie + c.encode("utf-8"), b"")
             epacket2 = getEpacket(padding, b"")
-            enc_len = len(padding + b"--" + cookie + c.encode("utf-8"))
+            enc_len = len(padding + b"--" + cookie + c.encode("utf-8")) * 2
             # print(c, epacket1[:enc_len] == epacket2[:enc_len])
 
             if epacket1[:enc_len] == epacket2[:enc_len]:
@@ -27,6 +27,7 @@ def getCookie():
                 print(cookie)
                 break
     return cookie
+
 
 cookie = getCookie()
 # cookie = b"you_will_never_guess_this_sugar_honey_salt_cookie"
