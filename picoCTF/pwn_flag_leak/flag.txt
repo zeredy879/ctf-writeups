@@ -1,0 +1,1 @@
+picoCTF{1_Am_fak3_f1ag}
