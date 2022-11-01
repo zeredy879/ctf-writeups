@@ -1,4 +1,3 @@
-from re import search
 from pwn import *
 
 context.log_level = "debug"
