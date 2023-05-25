@@ -1,0 +1,1 @@
+strings trace.pcap | grep pico

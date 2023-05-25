@@ -1,0 +1,1 @@
+IFS=];b=cat]/challenge/metadata.json;$b

@@ -1,0 +1,1 @@
+strings ret | grep 'pico'

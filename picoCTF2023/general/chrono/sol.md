@@ -1,0 +1,1 @@
+cd /challenge directly and cat, probably a mistake of challenge makers
