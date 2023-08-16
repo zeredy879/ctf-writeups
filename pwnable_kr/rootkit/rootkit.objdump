@@ -1,0 +1,508 @@
+
+rootkit：     文件格式 elf32-i386
+
+
+Disassembly of section .note.gnu.build-id:
+
+00000000 <.note.gnu.build-id>:
+   0:	04 00                	add    $0x0,%al
+   2:	00 00                	add    %al,(%eax)
+   4:	14 00                	adc    $0x0,%al
+   6:	00 00                	add    %al,(%eax)
+   8:	03 00                	add    (%eax),%eax
+   a:	00 00                	add    %al,(%eax)
+   c:	47                   	inc    %edi
+   d:	4e                   	dec    %esi
+   e:	55                   	push   %ebp
+   f:	00 55 52             	add    %dl,0x52(%ebp)
+  12:	f8                   	clc
+  13:	93                   	xchg   %eax,%ebx
+  14:	cf                   	iret
+  15:	02 ce                	add    %dh,%cl
+  17:	13 e9                	adc    %ecx,%ebp
+  19:	a1 83 af 3b 67       	mov    0x673baf83,%eax
+  1e:	17                   	pop    %ss
+  1f:	e8 84 49 3e ad       	call   ad3e49a8 <wp+0xad3e4708>
+
+Disassembly of section .text:
+
+00000000 <sys_renameat_hooked>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	53                   	push   %ebx
+   4:	83 ec 0c             	sub    $0xc,%esp
+   7:	e8 fc ff ff ff       	call   8 <sys_renameat_hooked+0x8>
+   c:	ba 00 00 00 00       	mov    $0x0,%edx
+  11:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  14:	89 d8                	mov    %ebx,%eax
+  16:	e8 fc ff ff ff       	call   17 <sys_renameat_hooked+0x17>
+  1b:	85 c0                	test   %eax,%eax
+  1d:	75 1d                	jne    3c <sys_renameat_hooked+0x3c>
+  1f:	8b 45 10             	mov    0x10(%ebp),%eax
+  22:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+  26:	89 44 24 08          	mov    %eax,0x8(%esp)
+  2a:	8b 45 08             	mov    0x8(%ebp),%eax
+  2d:	89 04 24             	mov    %eax,(%esp)
+  30:	ff 15 00 00 00 00    	call   *0x0
+  36:	83 c4 0c             	add    $0xc,%esp
+  39:	5b                   	pop    %ebx
+  3a:	5d                   	pop    %ebp
+  3b:	c3                   	ret
+  3c:	c7 04 24 05 00 00 00 	movl   $0x5,(%esp)
+  43:	e8 fc ff ff ff       	call   44 <sys_renameat_hooked+0x44>
+  48:	83 c8 ff             	or     $0xffffffff,%eax
+  4b:	eb e9                	jmp    36 <sys_renameat_hooked+0x36>
+  4d:	8d 76 00             	lea    0x0(%esi),%esi
+
+00000050 <sys_rename_hooked>:
+  50:	55                   	push   %ebp
+  51:	89 e5                	mov    %esp,%ebp
+  53:	53                   	push   %ebx
+  54:	83 ec 08             	sub    $0x8,%esp
+  57:	e8 fc ff ff ff       	call   58 <sys_rename_hooked+0x8>
+  5c:	ba 00 00 00 00       	mov    $0x0,%edx
+  61:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  64:	89 d8                	mov    %ebx,%eax
+  66:	e8 fc ff ff ff       	call   67 <sys_rename_hooked+0x17>
+  6b:	85 c0                	test   %eax,%eax
+  6d:	75 16                	jne    85 <sys_rename_hooked+0x35>
+  6f:	8b 45 0c             	mov    0xc(%ebp),%eax
+  72:	89 1c 24             	mov    %ebx,(%esp)
+  75:	89 44 24 04          	mov    %eax,0x4(%esp)
+  79:	ff 15 00 00 00 00    	call   *0x0
+  7f:	83 c4 08             	add    $0x8,%esp
+  82:	5b                   	pop    %ebx
+  83:	5d                   	pop    %ebp
+  84:	c3                   	ret
+  85:	c7 04 24 05 00 00 00 	movl   $0x5,(%esp)
+  8c:	e8 fc ff ff ff       	call   8d <sys_rename_hooked+0x3d>
+  91:	83 c8 ff             	or     $0xffffffff,%eax
+  94:	eb e9                	jmp    7f <sys_rename_hooked+0x2f>
+  96:	8d 76 00             	lea    0x0(%esi),%esi
+  99:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+000000a0 <sys_linkat_hooked>:
+  a0:	55                   	push   %ebp
+  a1:	89 e5                	mov    %esp,%ebp
+  a3:	53                   	push   %ebx
+  a4:	83 ec 10             	sub    $0x10,%esp
+  a7:	e8 fc ff ff ff       	call   a8 <sys_linkat_hooked+0x8>
+  ac:	ba 00 00 00 00       	mov    $0x0,%edx
+  b1:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+  b4:	89 d8                	mov    %ebx,%eax
+  b6:	e8 fc ff ff ff       	call   b7 <sys_linkat_hooked+0x17>
+  bb:	85 c0                	test   %eax,%eax
+  bd:	75 24                	jne    e3 <sys_linkat_hooked+0x43>
+  bf:	8b 45 14             	mov    0x14(%ebp),%eax
+  c2:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+  c6:	89 44 24 0c          	mov    %eax,0xc(%esp)
+  ca:	8b 45 10             	mov    0x10(%ebp),%eax
+  cd:	89 44 24 08          	mov    %eax,0x8(%esp)
+  d1:	8b 45 08             	mov    0x8(%ebp),%eax
+  d4:	89 04 24             	mov    %eax,(%esp)
+  d7:	ff 15 00 00 00 00    	call   *0x0
+  dd:	83 c4 10             	add    $0x10,%esp
+  e0:	5b                   	pop    %ebx
+  e1:	5d                   	pop    %ebp
+  e2:	c3                   	ret
+  e3:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+  ea:	e8 fc ff ff ff       	call   eb <sys_linkat_hooked+0x4b>
+  ef:	83 c8 ff             	or     $0xffffffff,%eax
+  f2:	eb e9                	jmp    dd <sys_linkat_hooked+0x3d>
+  f4:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+  fa:	8d bf 00 00 00 00    	lea    0x0(%edi),%edi
+
+00000100 <sys_link_hooked>:
+ 100:	55                   	push   %ebp
+ 101:	89 e5                	mov    %esp,%ebp
+ 103:	53                   	push   %ebx
+ 104:	83 ec 08             	sub    $0x8,%esp
+ 107:	e8 fc ff ff ff       	call   108 <sys_link_hooked+0x8>
+ 10c:	ba 00 00 00 00       	mov    $0x0,%edx
+ 111:	8b 5d 08             	mov    0x8(%ebp),%ebx
+ 114:	89 d8                	mov    %ebx,%eax
+ 116:	e8 fc ff ff ff       	call   117 <sys_link_hooked+0x17>
+ 11b:	85 c0                	test   %eax,%eax
+ 11d:	75 16                	jne    135 <sys_link_hooked+0x35>
+ 11f:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 122:	89 1c 24             	mov    %ebx,(%esp)
+ 125:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 129:	ff 15 00 00 00 00    	call   *0x0
+ 12f:	83 c4 08             	add    $0x8,%esp
+ 132:	5b                   	pop    %ebx
+ 133:	5d                   	pop    %ebp
+ 134:	c3                   	ret
+ 135:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+ 13c:	e8 fc ff ff ff       	call   13d <sys_link_hooked+0x3d>
+ 141:	83 c8 ff             	or     $0xffffffff,%eax
+ 144:	eb e9                	jmp    12f <sys_link_hooked+0x2f>
+ 146:	8d 76 00             	lea    0x0(%esi),%esi
+ 149:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+00000150 <sys_symlinkat_hooked>:
+ 150:	55                   	push   %ebp
+ 151:	89 e5                	mov    %esp,%ebp
+ 153:	53                   	push   %ebx
+ 154:	83 ec 0c             	sub    $0xc,%esp
+ 157:	e8 fc ff ff ff       	call   158 <sys_symlinkat_hooked+0x8>
+ 15c:	ba 00 00 00 00       	mov    $0x0,%edx
+ 161:	8b 5d 08             	mov    0x8(%ebp),%ebx
+ 164:	89 d8                	mov    %ebx,%eax
+ 166:	e8 fc ff ff ff       	call   167 <sys_symlinkat_hooked+0x17>
+ 16b:	85 c0                	test   %eax,%eax
+ 16d:	75 1d                	jne    18c <sys_symlinkat_hooked+0x3c>
+ 16f:	8b 45 10             	mov    0x10(%ebp),%eax
+ 172:	89 1c 24             	mov    %ebx,(%esp)
+ 175:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 179:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 17c:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 180:	ff 15 00 00 00 00    	call   *0x0
+ 186:	83 c4 0c             	add    $0xc,%esp
+ 189:	5b                   	pop    %ebx
+ 18a:	5d                   	pop    %ebp
+ 18b:	c3                   	ret
+ 18c:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+ 193:	e8 fc ff ff ff       	call   194 <sys_symlinkat_hooked+0x44>
+ 198:	83 c8 ff             	or     $0xffffffff,%eax
+ 19b:	eb e9                	jmp    186 <sys_symlinkat_hooked+0x36>
+ 19d:	8d 76 00             	lea    0x0(%esi),%esi
+
+000001a0 <sys_symlink_hooked>:
+ 1a0:	55                   	push   %ebp
+ 1a1:	89 e5                	mov    %esp,%ebp
+ 1a3:	53                   	push   %ebx
+ 1a4:	83 ec 08             	sub    $0x8,%esp
+ 1a7:	e8 fc ff ff ff       	call   1a8 <sys_symlink_hooked+0x8>
+ 1ac:	ba 00 00 00 00       	mov    $0x0,%edx
+ 1b1:	8b 5d 08             	mov    0x8(%ebp),%ebx
+ 1b4:	89 d8                	mov    %ebx,%eax
+ 1b6:	e8 fc ff ff ff       	call   1b7 <sys_symlink_hooked+0x17>
+ 1bb:	85 c0                	test   %eax,%eax
+ 1bd:	75 16                	jne    1d5 <sys_symlink_hooked+0x35>
+ 1bf:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 1c2:	89 1c 24             	mov    %ebx,(%esp)
+ 1c5:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 1c9:	ff 15 00 00 00 00    	call   *0x0
+ 1cf:	83 c4 08             	add    $0x8,%esp
+ 1d2:	5b                   	pop    %ebx
+ 1d3:	5d                   	pop    %ebp
+ 1d4:	c3                   	ret
+ 1d5:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+ 1dc:	e8 fc ff ff ff       	call   1dd <sys_symlink_hooked+0x3d>
+ 1e1:	83 c8 ff             	or     $0xffffffff,%eax
+ 1e4:	eb e9                	jmp    1cf <sys_symlink_hooked+0x2f>
+ 1e6:	8d 76 00             	lea    0x0(%esi),%esi
+ 1e9:	8d bc 27 00 00 00 00 	lea    0x0(%edi,%eiz,1),%edi
+
+000001f0 <sys_openat_hooked>:
+ 1f0:	55                   	push   %ebp
+ 1f1:	89 e5                	mov    %esp,%ebp
+ 1f3:	53                   	push   %ebx
+ 1f4:	83 ec 10             	sub    $0x10,%esp
+ 1f7:	e8 fc ff ff ff       	call   1f8 <sys_openat_hooked+0x8>
+ 1fc:	ba 00 00 00 00       	mov    $0x0,%edx
+ 201:	8b 5d 0c             	mov    0xc(%ebp),%ebx
+ 204:	89 d8                	mov    %ebx,%eax
+ 206:	e8 fc ff ff ff       	call   207 <sys_openat_hooked+0x17>
+ 20b:	85 c0                	test   %eax,%eax
+ 20d:	75 24                	jne    233 <sys_openat_hooked+0x43>
+ 20f:	8b 45 14             	mov    0x14(%ebp),%eax
+ 212:	89 5c 24 04          	mov    %ebx,0x4(%esp)
+ 216:	89 44 24 0c          	mov    %eax,0xc(%esp)
+ 21a:	8b 45 10             	mov    0x10(%ebp),%eax
+ 21d:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 221:	8b 45 08             	mov    0x8(%ebp),%eax
+ 224:	89 04 24             	mov    %eax,(%esp)
+ 227:	ff 15 00 00 00 00    	call   *0x0
+ 22d:	83 c4 10             	add    $0x10,%esp
+ 230:	5b                   	pop    %ebx
+ 231:	5d                   	pop    %ebp
+ 232:	c3                   	ret
+ 233:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+ 23a:	e8 fc ff ff ff       	call   23b <sys_openat_hooked+0x4b>
+ 23f:	83 c8 ff             	or     $0xffffffff,%eax
+ 242:	eb e9                	jmp    22d <sys_openat_hooked+0x3d>
+ 244:	8d b6 00 00 00 00    	lea    0x0(%esi),%esi
+ 24a:	8d bf 00 00 00 00    	lea    0x0(%edi),%edi
+
+00000250 <sys_open_hooked>:
+ 250:	55                   	push   %ebp
+ 251:	89 e5                	mov    %esp,%ebp
+ 253:	53                   	push   %ebx
+ 254:	83 ec 0c             	sub    $0xc,%esp
+ 257:	e8 fc ff ff ff       	call   258 <sys_open_hooked+0x8>
+ 25c:	ba 00 00 00 00       	mov    $0x0,%edx
+ 261:	8b 5d 08             	mov    0x8(%ebp),%ebx
+ 264:	89 d8                	mov    %ebx,%eax
+ 266:	e8 fc ff ff ff       	call   267 <sys_open_hooked+0x17>
+ 26b:	85 c0                	test   %eax,%eax
+ 26d:	75 1d                	jne    28c <sys_open_hooked+0x3c>
+ 26f:	8b 45 10             	mov    0x10(%ebp),%eax
+ 272:	89 1c 24             	mov    %ebx,(%esp)
+ 275:	89 44 24 08          	mov    %eax,0x8(%esp)
+ 279:	8b 45 0c             	mov    0xc(%ebp),%eax
+ 27c:	89 44 24 04          	mov    %eax,0x4(%esp)
+ 280:	ff 15 00 00 00 00    	call   *0x0
+ 286:	83 c4 0c             	add    $0xc,%esp
+ 289:	5b                   	pop    %ebx
+ 28a:	5d                   	pop    %ebp
+ 28b:	c3                   	ret
+ 28c:	c7 04 24 15 00 00 00 	movl   $0x15,(%esp)
+ 293:	e8 fc ff ff ff       	call   294 <sys_open_hooked+0x44>
+ 298:	83 c8 ff             	or     $0xffffffff,%eax
+ 29b:	eb e9                	jmp    286 <sys_open_hooked+0x36>
+ 29d:	8d 76 00             	lea    0x0(%esi),%esi
+
+000002a0 <wp>:
+ 2a0:	55                   	push   %ebp
+ 2a1:	89 e5                	mov    %esp,%ebp
+ 2a3:	e8 fc ff ff ff       	call   2a4 <wp+0x4>
+ 2a8:	83 f8 01             	cmp    $0x1,%eax
+ 2ab:	74 13                	je     2c0 <wp+0x20>
+ 2ad:	50                   	push   %eax
+ 2ae:	0f 20 c0             	mov    %cr0,%eax
+ 2b1:	25 ff ff fe ff       	and    $0xfffeffff,%eax
+ 2b6:	0f 22 c0             	mov    %eax,%cr0
+ 2b9:	58                   	pop    %eax
+ 2ba:	5d                   	pop    %ebp
+ 2bb:	c3                   	ret
+ 2bc:	8d 74 26 00          	lea    0x0(%esi,%eiz,1),%esi
+ 2c0:	50                   	push   %eax
+ 2c1:	0f 20 c0             	mov    %cr0,%eax
+ 2c4:	0d 00 00 01 00       	or     $0x10000,%eax
+ 2c9:	0f 22 c0             	mov    %eax,%cr0
+ 2cc:	58                   	pop    %eax
+ 2cd:	5d                   	pop    %ebp
+ 2ce:	c3                   	ret
+	...
+
+Disassembly of section .init.text:
+
+00000000 <init_module>:
+   0:	55                   	push   %ebp
+   1:	a1 34 a0 5f c1       	mov    0xc15fa034,%eax
+   6:	89 e5                	mov    %esp,%ebp
+   8:	c7 05 00 00 00 00 20 	movl   $0xc15fa020,0x0
+   f:	a0 5f c1 
+  12:	a3 00 00 00 00       	mov    %eax,0x0
+  17:	a1 bc a4 5f c1       	mov    0xc15fa4bc,%eax
+  1c:	a3 00 00 00 00       	mov    %eax,0x0
+  21:	a1 6c a1 5f c1       	mov    0xc15fa16c,%eax
+  26:	a3 00 00 00 00       	mov    %eax,0x0
+  2b:	a1 e0 a4 5f c1       	mov    0xc15fa4e0,%eax
+  30:	a3 00 00 00 00       	mov    %eax,0x0
+  35:	a1 44 a0 5f c1       	mov    0xc15fa044,%eax
+  3a:	a3 00 00 00 00       	mov    %eax,0x0
+  3f:	a1 dc a4 5f c1       	mov    0xc15fa4dc,%eax
+  44:	a3 00 00 00 00       	mov    %eax,0x0
+  49:	a1 b8 a0 5f c1       	mov    0xc15fa0b8,%eax
+  4e:	a3 00 00 00 00       	mov    %eax,0x0
+  53:	a1 d8 a4 5f c1       	mov    0xc15fa4d8,%eax
+  58:	a3 00 00 00 00       	mov    %eax,0x0
+  5d:	31 c0                	xor    %eax,%eax
+  5f:	e8 fc ff ff ff       	call   60 <init_module+0x60>
+  64:	a1 00 00 00 00       	mov    0x0,%eax
+  69:	c7 40 14 00 00 00 00 	movl   $0x0,0x14(%eax)
+  70:	c7 80 9c 04 00 00 00 	movl   $0x0,0x49c(%eax)
+  77:	00 00 00 
+  7a:	c7 80 4c 01 00 00 00 	movl   $0x0,0x14c(%eax)
+  81:	00 00 00 
+  84:	c7 80 c0 04 00 00 00 	movl   $0x0,0x4c0(%eax)
+  8b:	00 00 00 
+  8e:	c7 40 24 00 00 00 00 	movl   $0x0,0x24(%eax)
+  95:	c7 80 bc 04 00 00 00 	movl   $0x0,0x4bc(%eax)
+  9c:	00 00 00 
+  9f:	c7 80 98 00 00 00 00 	movl   $0x0,0x98(%eax)
+  a6:	00 00 00 
+  a9:	c7 80 b8 04 00 00 00 	movl   $0x0,0x4b8(%eax)
+  b0:	00 00 00 
+  b3:	b8 01 00 00 00       	mov    $0x1,%eax
+  b8:	e8 fc ff ff ff       	call   b9 <init_module+0xb9>
+  bd:	a1 08 00 00 00       	mov    0x8,%eax
+  c2:	8b 15 04 00 00 00    	mov    0x4,%edx
+  c8:	89 42 04             	mov    %eax,0x4(%edx)
+  cb:	89 10                	mov    %edx,(%eax)
+  cd:	31 c0                	xor    %eax,%eax
+  cf:	c7 05 04 00 00 00 04 	movl   $0x4,0x4
+  d6:	00 00 00 
+  d9:	c7 05 08 00 00 00 04 	movl   $0x4,0x8
+  e0:	00 00 00 
+  e3:	5d                   	pop    %ebp
+  e4:	c3                   	ret
+
+Disassembly of section .exit.text:
+
+00000000 <cleanup_module>:
+   0:	55                   	push   %ebp
+   1:	89 e5                	mov    %esp,%ebp
+   3:	5d                   	pop    %ebp
+   4:	c3                   	ret
+
+Disassembly of section .rodata.str1.1:
+
+00000000 <.rodata.str1.1>:
+   0:	66 6c                	data16 insb (%dx),%es:(%edi)
+   2:	61                   	popa
+   3:	67 00 4e 6f          	add    %cl,0x6f(%bp)
+   7:	74 20                	je     29 <.rodata.str1.1+0x29>
+   9:	73 6f                	jae    7a <sys_rename_hooked+0x2a>
+   b:	20 66 61             	and    %ah,0x61(%esi)
+   e:	73 74                	jae    84 <sys_rename_hooked+0x34>
+  10:	20 3a                	and    %bh,(%edx)
+  12:	29 0a                	sub    %ecx,(%edx)
+  14:	00 59 6f             	add    %bl,0x6f(%ecx)
+  17:	75 20                	jne    39 <__mod_vermagic5+0xd>
+  19:	77 69                	ja     84 <sys_rename_hooked+0x34>
+  1b:	6c                   	insb   (%dx),%es:(%edi)
+  1c:	6c                   	insb   (%dx),%es:(%edi)
+  1d:	20 6e 6f             	and    %ch,0x6f(%esi)
+  20:	74 20                	je     42 <__mod_vermagic5+0x16>
+  22:	73 65                	jae    89 <sys_rename_hooked+0x39>
+  24:	65 20 74 68 65       	and    %dh,%gs:0x65(%eax,%ebp,2)
+  29:	20 66 6c             	and    %ah,0x6c(%esi)
+  2c:	61                   	popa
+  2d:	67 2e 2e 2e 0a 00    	cs cs or %cs:(%bx,%si),%al
+
+Disassembly of section __mcount_loc:
+
+00000000 <__mcount_loc>:
+   0:	07                   	pop    %es
+   1:	00 00                	add    %al,(%eax)
+   3:	00 57 00             	add    %dl,0x0(%edi)
+   6:	00 00                	add    %al,(%eax)
+   8:	a7                   	cmpsl  %es:(%edi),%ds:(%esi)
+   9:	00 00                	add    %al,(%eax)
+   b:	00 07                	add    %al,(%edi)
+   d:	01 00                	add    %eax,(%eax)
+   f:	00 57 01             	add    %dl,0x1(%edi)
+  12:	00 00                	add    %al,(%eax)
+  14:	a7                   	cmpsl  %es:(%edi),%ds:(%esi)
+  15:	01 00                	add    %eax,(%eax)
+  17:	00 f7                	add    %dh,%bh
+  19:	01 00                	add    %eax,(%eax)
+  1b:	00 57 02             	add    %dl,0x2(%edi)
+  1e:	00 00                	add    %al,(%eax)
+  20:	a3                   	.byte 0xa3
+  21:	02 00                	add    (%eax),%al
+	...
+
+Disassembly of section .modinfo:
+
+00000000 <__mod_srcversion32>:
+   0:	73 72                	jae    74 <sys_rename_hooked+0x24>
+   2:	63 76 65             	arpl   %si,0x65(%esi)
+   5:	72 73                	jb     7a <sys_rename_hooked+0x2a>
+   7:	69 6f 6e 3d 38 35 38 	imul   $0x3835383d,0x6e(%edi),%ebp
+   e:	39 36                	cmp    %esi,(%esi)
+  10:	39 44 42 39          	cmp    %eax,0x39(%edx,%eax,2)
+  14:	38 36                	cmp    %dh,(%esi)
+  16:	45                   	inc    %ebp
+  17:	42                   	inc    %edx
+  18:	30 39                	xor    %bh,(%ecx)
+  1a:	33 31                	xor    (%ecx),%esi
+  1c:	33 35 42 35 43 34    	xor    0x34433542,%esi
+	...
+
+00000023 <__module_depends>:
+  23:	64 65 70 65          	fs gs jo 8c <sys_rename_hooked+0x3c>
+  27:	6e                   	outsb  %ds:(%esi),(%dx)
+  28:	64 73 3d             	fs jae 68 <sys_rename_hooked+0x18>
+	...
+
+0000002c <__mod_vermagic5>:
+  2c:	76 65                	jbe    93 <sys_rename_hooked+0x43>
+  2e:	72 6d                	jb     9d <sys_rename_hooked+0x4d>
+  30:	61                   	popa
+  31:	67 69 63 3d 33 2e 37 	imul   $0x2e372e33,0x3d(%bp,%di),%esp
+  38:	2e 
+  39:	31 20                	xor    %esp,(%eax)
+  3b:	53                   	push   %ebx
+  3c:	4d                   	dec    %ebp
+  3d:	50                   	push   %eax
+  3e:	20 6d 6f             	and    %ch,0x6f(%ebp)
+  41:	64 5f                	fs pop %edi
+  43:	75 6e                	jne    b3 <sys_linkat_hooked+0x13>
+  45:	6c                   	insb   (%dx),%es:(%edi)
+  46:	6f                   	outsl  %ds:(%esi),(%dx)
+  47:	61                   	popa
+  48:	64 20 6d 6f          	and    %ch,%fs:0x6f(%ebp)
+  4c:	64 76 65             	fs jbe b4 <sys_linkat_hooked+0x14>
+  4f:	72 73                	jb     c4 <sys_linkat_hooked+0x24>
+  51:	69 6f 6e 73 20 36 38 	imul   $0x38362073,0x6e(%edi),%ebp
+  58:	36 20 00             	and    %al,%ss:(%eax)
+
+Disassembly of section __versions:
+
+00000000 <____versions>:
+   0:	88 8d 9b d3 6d 6f    	mov    %cl,0x6f6dd39b(%ebp)
+   6:	64 75 6c             	fs jne 75 <____versions+0x75>
+   9:	65 5f                	gs pop %edi
+   b:	6c                   	insb   (%dx),%es:(%edi)
+   c:	61                   	popa
+   d:	79 6f                	jns    7e <____versions+0x7e>
+   f:	75 74                	jne    85 <____versions+0x85>
+	...
+  3d:	00 00                	add    %al,(%eax)
+  3f:	00 b8 de ee 50 70    	add    %bh,0x7050eede(%eax)
+  45:	72 69                	jb     b0 <____versions+0xb0>
+  47:	6e                   	outsb  %ds:(%esi),(%dx)
+  48:	74 6b                	je     b5 <____versions+0xb5>
+	...
+  7e:	00 00                	add    %al,(%eax)
+  80:	a8 26                	test   $0x26,%al
+  82:	6d                   	insl   (%dx),%es:(%edi)
+  83:	1e                   	push   %ds
+  84:	73 74                	jae    fa <____versions+0xfa>
+  86:	72 73                	jb     fb <____versions+0xfb>
+  88:	74 72                	je     fc <____versions+0xfc>
+	...
+  be:	00 00                	add    %al,(%eax)
+  c0:	9a 0f 39 b4 6d 63 6f 	lcall  $0x6f63,$0x6db4390f
+  c7:	75 6e                	jne    137 <sys_link_hooked+0x37>
+  c9:	74 00                	je     cb <____versions+0xcb>
+	...
+
+Disassembly of section .gnu.linkonce.this_module:
+
+00000000 <__this_module>:
+	...
+   c:	72 6f                	jb     7d <__this_module+0x7d>
+   e:	6f                   	outsl  %ds:(%esi),(%dx)
+   f:	74 6b                	je     7c <__this_module+0x7c>
+  11:	69 74 00 00 00 00 00 	imul   $0x0,0x0(%eax,%eax,1),%esi
+  18:	00 
+	...
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	00 47 43             	add    %al,0x43(%edi)
+   3:	43                   	inc    %ebx
+   4:	3a 20                	cmp    (%eax),%ah
+   6:	28 55 62             	sub    %dl,0x62(%ebp)
+   9:	75 6e                	jne    79 <sys_rename_hooked+0x29>
+   b:	74 75                	je     82 <sys_rename_hooked+0x32>
+   d:	2f                   	das
+   e:	4c                   	dec    %esp
+   f:	69 6e 61 72 6f 20 34 	imul   $0x34206f72,0x61(%esi),%ebp
+  16:	2e 36 2e 33 2d 31 75 	cs ss xor %cs:0x75627531,%ebp
+  1d:	62 75 
+  1f:	6e                   	outsb  %ds:(%esi),(%dx)
+  20:	74 75                	je     97 <sys_rename_hooked+0x47>
+  22:	35 29 20 34 2e       	xor    $0x2e342029,%eax
+  27:	36 2e 33 00          	ss xor %cs:(%eax),%eax
+  2b:	00 47 43             	add    %al,0x43(%edi)
+  2e:	43                   	inc    %ebx
+  2f:	3a 20                	cmp    (%eax),%ah
+  31:	28 55 62             	sub    %dl,0x62(%ebp)
+  34:	75 6e                	jne    a4 <sys_linkat_hooked+0x4>
+  36:	74 75                	je     ad <sys_linkat_hooked+0xd>
+  38:	2f                   	das
+  39:	4c                   	dec    %esp
+  3a:	69 6e 61 72 6f 20 34 	imul   $0x34206f72,0x61(%esi),%ebp
+  41:	2e 36 2e 33 2d 31 75 	cs ss xor %cs:0x75627531,%ebp
+  48:	62 75 
+  4a:	6e                   	outsb  %ds:(%esi),(%dx)
+  4b:	74 75                	je     c2 <sys_linkat_hooked+0x22>
+  4d:	35 29 20 34 2e       	xor    $0x2e342029,%eax
+  52:	36 2e 33 00          	ss xor %cs:(%eax),%eax
